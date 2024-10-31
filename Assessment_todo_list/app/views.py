@@ -87,6 +87,7 @@ def toggle_complete(id):
     assessment.completed = not assessment.completed
     db.session.commit()
     flash('Assessment status updated successfully!', 'success')
+    return redirect(url_for('home'))
 
 
 # Delete an assessment and remove it from the database. Undo the delete, should any error occur
@@ -100,5 +101,5 @@ def delete_assessment(id):
     except Exception as e:
         db.session.rollback()
         flash(f'Error deleting assessment: {str(e)}', 'danger')
-    return redirect(url_for('home'))
+    return redirect(url_for('uncompleted'))
 
