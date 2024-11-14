@@ -4,8 +4,7 @@
 
 ## Features 
 - **Task Creation:** Easily add new tasks.
-- **Task Completion:
-- ** Mark tasks as completed.
+- **Task Completion:** Mark tasks as completed.
 - **Task Deletion:** Remove tasks from the list.
 - **User Authentication:** Secure user login and registration.
 - **Responsive Design:** Works seamlessly on various devices.
