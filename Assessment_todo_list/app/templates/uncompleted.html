@@ -4,25 +4,29 @@
 {% block title %}Assessments in Progress{% endblock %}
 
 {% block content %}
-    <h1 class="text-nowrap">Assessments in Progress</h1>
-    <br>
-    {% if assessments %}
-            {% for assessment in assessments %}
-                <h5> <b>Module:</b> {{ assessment.module_code }}</h5>
-                <h6> <b>Assessment:</b> {{ assessment.title }}</h6>
-                <p>  <b>Due:</b> {{ assessment.deadline }}</p>
-                <p>{{ assessment.description }}</p>
-
-                <div class="btn-group" role="group" aria-label="Button group with spacing">
-                    <a href="{{ url_for('edit', id=assessment.id) }}" class="btn btn-primary btn-sm">Edit</a>&nbsp;
-                    <a href="{{ url_for('toggle_complete', id=assessment.id) }}" class="btn btn-warning btn-sm text-nowrap">Mark as COMPLETED</a>&nbsp;
-                    <a href="{{ url_for('delete_assessment', id=assessment.id) }}" class="btn btn-danger btn-sm ">Delete</a>
+<h1 class="text-nowrap">Assessments in Progress</h1>
+<br>
+{% if assessments %}
+    <div class="row">
+        {% for assessment in assessments %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>Module:</b> {{ assessment.module_code }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><b>Assessment:</b> {{ assessment.title }}</h6>
+                        <p class="card-text"><b>Due:</b> {{ assessment.deadline }}</p>
+                        <p class="card-text">{{ assessment.description }}</p>
+                        <div class="btn-group" role="group" aria-label="Button group with spacing">
+                            <a href="{{ url_for('edit', id=assessment.id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{{ url_for('toggle_complete', id=assessment.id) }}" class="btn btn-warning btn-sm text-nowrap">Mark as COMPLETED</a>
+                            <a href="{{ url_for('delete_assessment', id=assessment.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <br>
-                <br>
-            {% endfor %}
-    {% else %}
-        <p>No assessments in progress</p>
-    {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+<p>No assessments in progress</p>
+{% endif %}
 {% endblock %}

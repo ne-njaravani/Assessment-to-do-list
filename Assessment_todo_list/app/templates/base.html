@@ -20,39 +20,38 @@
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Assessment To-do List</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item {% if request.path == '/' %}active{% endif %}">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item {% if request.path == '/completed' %}active{% endif %}">
-                <a class="nav-link" href="/completed">Completed Assessments</a>
-            </li>
-            <li class="nav-item {% if request.path == '/uncompleted' %}active{% endif %}">
-                <a class="nav-link" href="/uncompleted">Assessments in Progress</a>
-            </li>
-            <li class="nav-item {% if request.path == '/create' %}active{% endif %}">
-                <a class="nav-link" href="/create">Create Assessment</a>
-            </li>
-        </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item {% if request.path == '/completed' %}active{% endif %}">
+          <a class="nav-link" href="/completed">Completed Assessments</a>
+        </li>
+        <li class="nav-item {% if request.path == '/uncompleted' %}active{% endif %}">
+          <a class="nav-link" href="/uncompleted">Assessments in Progress</a>
+        </li>
+        <li class="nav-item {% if request.path == '/create' %}active{% endif %}">
+          <a class="nav-link" href="/create">Create Assessment</a>
+        </li>
+      </ul>
     </div>
   </nav>
-<br>
+  <br>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4"></div>
-      <div class="col-3">
+      <div class="col-md-8 offset-md-2">
         {% with messages = get_flashed_messages(with_categories=True) %}
-          {% if messages %}
-            {% for category, message in messages %}
-              <div class="alert alert-{{ category }}" role="alert">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
         {% block content %}{% endblock %}
       </div>
@@ -70,4 +69,5 @@
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 </body>
+
 </html>
