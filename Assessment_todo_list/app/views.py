@@ -2,13 +2,50 @@ from flask import Flask, render_template, redirect, url_for, flash, request
 from app import app, db, models
 from .forms import AssessmentForm
 from sqlalchemy.exc import IntegrityError
+from datetime import datetime, timedelta
+
+
+def get_deadline_status(deadline, completed):
+    """Returns the status of the deadline for styling purposes."""
+    if completed:
+        return 'completed'
+    today = datetime.today().date()
+    days_until = (deadline - today).days
+    if days_until < 0:
+        return 'overdue'
+    elif days_until <= 7:
+        return 'due-soon'
+    return 'on-track'
+
+
+def format_deadline(deadline):
+    """Format deadline in a more user-friendly way."""
+    return deadline.strftime('%d %b %Y')
+
+
+def days_until_deadline(deadline):
+    """Calculate days until deadline."""
+    today = datetime.today().date()
+    return (deadline - today).days
+
+
+# Add context processor to make functions available in templates
+@app.context_processor
+def utility_processor():
+    return {
+        'get_deadline_status': get_deadline_status,
+        'format_deadline': format_deadline,
+        'days_until_deadline': days_until_deadline
+    }
 
 
 # Display all the assessments grouping them by whether they are complete or incomplete
 @app.route('/')
 def home():
-    in_progress_assessments = models.Assessment.query.filter_by(completed=False).all()
-    completed_assessments = models.Assessment.query.filter_by(completed=True).all()
+    # Sort in-progress assessments by deadline (earliest first)
+    in_progress_assessments = models.Assessment.query.filter_by(completed=False).order_by(models.Assessment.deadline.asc()).all()
+    # Sort completed assessments by deadline (most recent first)
+    completed_assessments = models.Assessment.query.filter_by(completed=True).order_by(models.Assessment.deadline.desc()).all()
     return render_template('home.html', 
                            in_progress_assessments=in_progress_assessments, 
                            completed_assessments=completed_assessments)
@@ -70,13 +107,13 @@ def edit(id):
 # Filter the assessments based on their completion status
 @app.route('/completed')
 def completed():
-    assessments = models.Assessment.query.filter_by(completed=True).all()
+    assessments = models.Assessment.query.filter_by(completed=True).order_by(models.Assessment.deadline.desc()).all()
     return render_template('completed.html', assessments=assessments)
 
 
 @app.route('/uncompleted')
 def uncompleted():
-    assessments = models.Assessment.query.filter_by(completed=False).all()
+    assessments = models.Assessment.query.filter_by(completed=False).order_by(models.Assessment.deadline.asc()).all()
     return render_template('uncompleted.html', assessments=assessments)
 
 

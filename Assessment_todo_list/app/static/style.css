@@ -2,45 +2,292 @@
 /* hover effect*/
 /* Add styles for active nav item */
 .nav-item.active .nav-link {
-    background-color: grey;
-    color: black;
+    background-color: #495057;
+    color: white;
+    border-radius: 4px;
 }
 
 /* Navbar hover effect */
 .nav-link {
     transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 4px;
+    margin: 0 2px;
 }
 
 .nav-link:hover {
-    background-color: lightgrey;
-    color: black;
+    background-color: #6c757d;
+    color: white;
 }
 
 /* Ensure active page also shows hover effect */
 .nav-item.active .nav-link:hover {
-    background-color: lightgrey;
-    color: black;
+    background-color: #6c757d;
+    color: white;
 }
 
 
 /* Add hover effect to buttons */
 .btn {
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
+    margin: 2px;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 
 /* Change Width for Input Fields */
 
 .title-input {
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .module-code-input {
-    max-width: 125px;
+    max-width: 150px;
 }
 
 .deadline-input {
-    max-width: 175px;
+    max-width: 200px;
+}
+
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+}
+
+.card-text {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Status-based card styling */
+.card-in-progress {
+    border-left: 4px solid #ffc107;
+}
+
+.card-completed {
+    border-left: 4px solid #28a745;
+    background-color: #f8fff9;
+}
+
+.card-overdue {
+    border-left: 4px solid #dc3545;
+    background-color: #fff8f8;
+}
+
+.card-due-soon {
+    border-left: 4px solid #fd7e14;
+    background-color: #fffbf5;
+}
+
+/* Deadline badge styling */
+.deadline-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.badge-overdue {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-due-soon {
+    background-color: #fd7e14;
+    color: white;
+}
+
+.badge-on-track {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-completed {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Button group styling */
+.btn-group-actions {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.btn-group-actions .btn {
+    flex: 1;
+    min-width: 70px;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+}
+
+/* Section headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.section-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-icon {
+    font-size: 1.5rem;
+}
+
+/* Status counts */
+.status-count {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+/* Page title */
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #007bff;
+}
+
+.page-title h1 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+/* Empty state styling */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    color: #6c757d;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Alert styling */
+.alert {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+/* Create button on home page */
+.btn-create {
+    font-size: 1rem;
+    padding: 10px 25px;
+    border-radius: 25px;
+}
+
+/* Description text styling */
+.description-text {
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* Delete confirmation modal */
+.modal-confirm {
+    border-radius: 12px;
+}
+
+.modal-confirm .modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-confirm .modal-footer {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .btn-group-actions {
+        flex-direction: column;
+    }
+    
+    .btn-group-actions .btn {
+        width: 100%;
+    }
+    
+    .page-title h1 {
+        font-size: 1.5rem;
+    }
 }
 
 
