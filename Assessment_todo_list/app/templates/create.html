@@ -26,7 +26,7 @@
                 <label class="form-label">
                     <i class="fas fa-book mr-1"></i>{{ form.module_code.label.text }}
                 </label>
-                {{ form.module_code(class_='form-control module-code-input', size=32, required=True, pattern="^[A-Z]{4}[0-9]{4}$", placeholder="ABCD1234") }}
+                {{ form.module_code(class_='form-control module-code-input', size=32, required=True, pattern="^[A-Z]{4}\\d{4}$", placeholder="ABCD1234") }}
                 <small class="form-text text-muted">Format: 4 uppercase letters followed by 4 digits (e.g., COMP1234)</small>
                 {% for error in form.module_code.errors %}
                     <div class="alert alert-danger mt-2" role="alert">

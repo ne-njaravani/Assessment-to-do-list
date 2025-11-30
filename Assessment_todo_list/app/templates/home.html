@@ -27,7 +27,7 @@
                             </h5>
                             <span class="deadline-badge badge-{{ status }}">
                                 {% if status == 'overdue' %}
-                                    <i class="fas fa-exclamation-triangle mr-1"></i>{{ -days }} days overdue
+                                    <i class="fas fa-exclamation-triangle mr-1"></i>{{ days|abs }} days overdue
                                 {% elif status == 'due-soon' %}
                                     <i class="fas fa-clock mr-1"></i>{{ days }} days left
                                 {% else %}
